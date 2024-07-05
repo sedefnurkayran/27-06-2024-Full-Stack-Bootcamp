@@ -103,6 +103,7 @@
 
         console.log(mesaj);
 
+        ARRAY 
 
         let dizi = [1,2,3,4,5];
         console.log(dizi.length);
@@ -126,7 +127,7 @@
         dizi.splice(2,0,10);
         console.log(dizi);
 
-
+        OBJE OLUSTURMA (ANAHTAR DEGER CIFTLERI)
 
         let kisi = {
             isim: "Ahmet",
@@ -135,12 +136,15 @@
         }
         console.log(kisi.isim);
 
+        Yeni kisi ekleme
         kisi.soyisim= "Kaya";
         console.log(kisi.soyisim);
 
+        Kisi silme
         delete kisi.meslek;
         console.log(kisi.meslek);
 
+        ZAMAN
 
         let simdi = new Date();
         console.log(simdi);
@@ -149,7 +153,8 @@
         let mount = simdi.getMonth();
         console.log(mount+1);
 
-         
+        KARSILASTIRMA OPERATORLERI
+
         let x = 20;
         let y = 21;
 
@@ -163,6 +168,8 @@
             console.log("x ve y eşittir");
         }
 
+        TERNARY OPERATOR
+        
         let yas = 18;
         let mesaj = (yas >= 18) ? "Yetişkin." : "Çocuk";
         console.log(mesaj);
@@ -185,21 +192,26 @@
         console.log(gunadi);
 
 
+        FONKSIYONLAR
 
+        Normal Fonksiyon
         function selamla(isim){
             return `Merhaba, ${isim}`;
         }
         console.log(selamla("Ahmet"));
 
+        IIFE fonksiyonu
         (function(){
             console.log("Bu bir IIFE fonksiyonudur.");
         })();
 
+        Anonim fonksiyon
         setTimeout(function(){
             console.log("Bu bir anonim fonksiyondur.");
         },1000);
 
                  
+        DÖNGÜLER
 
         let i = 0;
         while(i<5){
@@ -211,7 +223,7 @@
             console.log(k);
         }
 
-        
+        SCOPE(KAPSAM-ERISIM)
         let globalDegisken = "Bu bir global değişklendir.";
 
         function fonksiyon(){
