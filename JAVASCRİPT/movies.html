@@ -9,6 +9,7 @@
     <style>
         body{
             padding: 20px;
+            background-color: bisque;
         }
         #movieList, #watchedList{
             margin-top: 20px;
@@ -26,7 +27,7 @@
 
         <div class="mb-3">
             <label for="movieName" class="form-label">Film Adı:</label>
-            <input type="text" class="form-control" id="movieName">
+            <input type="text" class="form-control" id="movieName"> 
         </div>
         <div class="mb-3">
             <label for="imageUrl" class="form-label">Film URL:</label>
@@ -74,6 +75,7 @@
 
             var movieTitle = document.createElement('span');
             movieTitle.textContent = movieName;
+            movieTitle.className = 'movie-title'; // movieTitle için sınıf
 
             movieContent.appendChild(movieImage);
             movieContent.appendChild(movieTitle);
@@ -81,7 +83,7 @@
             var buttons = document.createElement('div');
             buttons.innerHTML = 
             `<button class= "btn btn-success me-2" 
-            onclick="watchMovie(this)">İzlendi</button>
+            onclick="watchedMovie(this)">İzlendi</button>
             <button class= "btn btn-danger me-2" onclick="removeMovie(this)">Kaldır</button>
             `;
 
@@ -94,26 +96,53 @@
             document.getElementById('imageUrl').value='';
         }
 
-        function watchMovie(button){
+        function watchedMovie(button){
 
-            var listItem = button.parentNode.parentNode;
+            var listItem = button.parentNode.parentNode; //butonun 2 üst elemanina ulasir.
 
             var watchedList = document.getElementById('watchedList');
 
             var emotion = prompt('Filmle alakalı görüşlerinizi yazınız:');
 
-            var movieContent = listItem.querySelector('.d-flex .align-items-center');
+            var movieContent = listItem.querySelector('.d-flex .align-items-center'); //querySelector metodu, belirtilen seçiciye uyan ilk elementi döner.
 
             var movieImage = movieContent.querySelector('.movie-image');
 
+          //var movieTitle = listItem.querySelector('.movie-title');
+            var movieTitle = movieContent.querySelector('.movie-title');
 
             var smallImage = movieImage.cloneNode();
             smallImage.className = 'movie-image me-2';
 
             listItem.innerHTML = '';
             listItem.appendChild(smallImage);
+
+            //ADDING FILM TITLE       
+            var watchedMovieTitle = movieTitle.cloneNode(true); // reached children(descendants)
+           //watchedMovieTitle.className= 'movie-title'
+            listItem.appendChild(watchedMovieTitle);
+            //YA DA
+           //var watchedMovieTitle = movieTitle.cloneNode(false); // only the node copies. 
+           //watchedMovieTitle.textContent = movieTitle.textContent; // It copies content manually
+           //listItem.appendChild(watchedMovieTitle);
+
+            //Bu sekilde olmuyor.?
+            // var watchedMovieTitle = movieTitle.cloneNode(false); //movietitlw ile dogrudan title a erismis olmadim mi  zaten?
+            // listItem.appendChild(watchedMovieTitle);
+            //ya da ---
+            // var watchedMovieTitle = movieTitle.cloneNode(); //cloneNode(true) ile ayni degil mi?
+            // listItem.appendChild(watchedMovieTitle);
+
+           
+
             listItem.innerHTML+= `<span>${emotion}</span>`;
 
+            var removeButton = document.createElement('div');
+            removeButton.innerHTML = 
+            `<button class= "btn btn-danger me-2" onclick="removeMovie(this)">Kaldır</button>`;
+            listItem.appendChild(removeButton);
+
+         
             watchedList.appendChild(listItem);
 
             button.parentNode.innerHTML =  '<span class="text-success">İzlendi</span>'

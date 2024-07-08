@@ -19,7 +19,7 @@
     <div class="kutu" id="kutu1">Kutu 1</div>
     <div class="kutu" id="kutu2">Kutu 2</div>
     <div class="kutu" id="kutu3">Kutu 3</div>
-    <ul id="liste">
+    <ul id="liste"> 
         <li>Öğe 1</li>
         <li>Öğe 2</li>
         <li>Öğe 3</li>
@@ -27,14 +27,15 @@
     <button onclick="Tiklandi()">Tıkla</button>
 
     <script>
-        console.log("Document Object:", document);
+        //Doküman objelerine erisme. ID üzerinden erisilir.
+        console.log("Document Object:", document); //tüm belge
         console.log("Sayfa Başlığı:", document.title);
 
         let baslik = document.getElementById("baslik");
         let kutular = document.getElementsByClassName("kutu");
         let paragraf = document.getElementsByTagName("p");
         let ilkKutu = document.querySelector(".kutu");
-        let tumKutular = document.querySelectorAll(".kutu");
+        let tumKutular = document.querySelectorAll(".kutu"); //Birden fazla ayni ozellige sahip objeye ulasmak icin.
 
         console.log("Başlık:",baslik);
         console.log("Kutular:",kutular);
@@ -52,8 +53,8 @@
         let ikinciEleman = ilkEleman.nextSibling;
 
         console.log("Listenin Düğümleri:", liste.parentNode);
-        console.log("Listenin Elemanları:", liste.childNodes);
-        console.log("Listenin Elementlerı:", liste.children);
+        console.log("Listenin Elemanları:", liste.childNodes); // Tüm çocuk düğümlerine (element, metin, vb.) erişir.
+        console.log("Listenin Elementlerı:", liste.children); //liste elementinin elemanlari; cocuk elemanlari, li elementlerine erisir.
 
 
         function Tiklandi(){
@@ -67,19 +68,22 @@
             document.body.insertBefore(yeniP,yeniDiv);
         }
 
+        //REMOVE
         let silinecekKutu = document.getElementById("kutu3");
         silinecekKutu.parentNode.removeChild(silinecekKutu);
 
+        //REPLACE
         let eskiKutu = document.getElementById("kutu1");
         let yeniKutu = document.createElement("div");
         yeniKutu.textContent = "Bu yeni bir kutudur";
         yeniKutu.className = "kutu";
         eskiKutu.parentNode.replaceChild(yeniKutu,eskiKutu);
 
+        //ATTRIBUTE - SILME EKLEME GÖRÜNTÜLEME ISLEMLERI
         let link = document.createElement("a");
         link.textContent="Bu bir bağlantıdır.";
-        link.setAttribute("href","https://www.techcareer.net/");
-        link.setAttribute("target","_blank");
+        link.setAttribute("href","https://www.techcareer.net/"); //Set ile atama islemi yapariz
+        link.setAttribute("target","_blank"); //yeni sekmede acar
         document.body.appendChild(link);
 
         let mevcutHref = link.getAttribute("href");
